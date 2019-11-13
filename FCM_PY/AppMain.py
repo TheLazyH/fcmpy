@@ -24,12 +24,12 @@ def firebase():
         registration_id = format(args['fcm_token'])
         message_title = format(args['title'])
         message_body = format(args['body'])
-        
+
         push_service = FCMNotification(api_key = API_KEY)
         #result = push_service.notify_single_device(registration_id=registration_id, message_body=message_body, message_title=message_title)
         dict1 = {
-        "title":message_title,
         "body":message_body,
+        "title":message_title,
     }
         result = push_service.notify_single_device(registration_id=registration_id, data_message=dict1)
         return jsonify(dict1)
@@ -47,10 +47,12 @@ def gcm():
     message_title = format(args['title'])
     message_body = format(args['body'])
     dict1 = {
-        "title":message_title,
         "body":message_body,
+        "title":message_title,
     }
     return jsonify(dict1)    
 
-if __name__ == "__main__":
-    app.run()
+port = int(os.environ.get('PORT', 33507))
+if __name__ == '__main__':
+    app.run(threaded=True, host='0.0.0.0', port=port)
+
