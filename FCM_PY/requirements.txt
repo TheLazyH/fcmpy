@@ -1,0 +1,6 @@
+flask = "*"
+flask-restful = "*"
+request = "*"
+firebase-admin = "*"
+pyfcm = "*"
+gunicorn = "*"
